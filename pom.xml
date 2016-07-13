@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.3.RELEASE</version>
+		<version>1.3.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -23,9 +23,18 @@
 		<start-class>demo.SpringSecuritySessionRedisUserDetailsServiceApplication</start-class>
 		<java.version>1.7</java.version>
 		<lightadmin.version>1.2.0.RC1</lightadmin.version>
+		<mongodb.version>3.2.2</mongodb.version>
+		<spring-data-mongodb.version>1.9.2.RELEASE</spring-data-mongodb.version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<version>1.3.6.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

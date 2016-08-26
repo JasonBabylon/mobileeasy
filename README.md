@@ -1,6 +1,8 @@
 #MobileEasy 移动易 —— 手机APP后端 后台管理 综合一体化方案
 
-## 7月份将有一次大的更新在这个之前，任何新的需求建议，bug提交，贡献请加入企鹅讨论群：103880410，请注明来自[赛克通博客](https://blog.sectong.com)或GitHub。复制代码，记得Fork并且Star。一旦有更新，会推送到你个人的GitHub账号中，切记切记。
+## 7月份更新在devel分支，请自行切换。贡献请加入企鹅讨论群：103880410，请注明来自[赛克通博客](https://blog.sectong.com)或GitHub。复制代码，记得Fork并且Star。一旦有更新，会推送到你个人的GitHub账号中，切记切记。另：配套混合APP端在 github.com/sectong/mobileeasyapp，与此后台框架无缝结合。
+
+
 
 ##架构设计
 ![Alt 架构设计](https://cloud.githubusercontent.com/assets/3350211/8512734/6e6de47a-2383-11e5-8f1f-f30632b556d1.png)

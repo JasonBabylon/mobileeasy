@@ -30,38 +30,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * 使用jdbc认证方式，密码采用BCrypt加密，salt 10
 	 */
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth)
-			throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource)
-				.passwordEncoder(new BCryptPasswordEncoder(10));
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(new BCryptPasswordEncoder(10));
 
 	}
 
 	@Configuration
 	@Order(1)
-	public static class ApiWebSecurityConfigurationAdapter extends
-			WebSecurityConfigurerAdapter {
+	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
-			http.antMatcher("/api/i/**").authorizeRequests().anyRequest()
-					.hasRole("USER").and().httpBasic();
+			http.antMatcher("/api/i/**").authorizeRequests().anyRequest().hasRole("USER").and().httpBasic().and().csrf()
+					.disable();
 		}
 	}
 
 	@Configuration
 	@Order(2)
-	public static class FormLoginWebSecurityConfigurerAdapter extends
-			WebSecurityConfigurerAdapter {
+	public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
+			// http.httpBasic().disable();//启用redis需要启用此行
 			http.authorizeRequests()
-					.antMatchers("/api/create", "/", "/assets/**", "/plugins/**",
-							"/bootstrap/**", "/api-docs/**", "/debug/**", "/api/**")
-					.permitAll()
-					.antMatchers("/admin/**").hasRole("ADMIN")
-					.anyRequest().authenticated().and().formLogin()
-					.loginPage("/login").permitAll().and().logout().permitAll()
-					.and().csrf().disable();
+					.antMatchers("/api/create", "/", "/assets/**", "/plugins/**", "/static/**", "/bootstrap/**",
+							"/api-docs/**", "/debug/**", "/api/**")
+					.permitAll().antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated().and()
+					.formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().csrf().disable();
 		}
 	}
 }
